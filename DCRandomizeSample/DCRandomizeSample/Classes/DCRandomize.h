@@ -10,6 +10,9 @@
 @interface DCRandomize : NSObject
 
 #pragma mark method prototype
-+ (NSArray *)shuffleArray:(NSArray *)array;
++ (NSMutableArray *)shuffleArray:(NSMutableArray *)array;
++ (NSMutableArray *)shuffle:(NSInteger)min max:(NSInteger)max;
++ (NSInteger)exact:(NSInteger)min max:(NSInteger)max exceptId:(NSInteger)exceptId;
++ (NSInteger)range:(NSInteger)min max:(NSInteger)max;
 
 @end

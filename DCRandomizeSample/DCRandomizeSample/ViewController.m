@@ -10,8 +10,7 @@
 
 @interface ViewController ()
 
-@property NSArray *array;
-@property UILabel *shuffleListLabel;
+@property NSMutableArray *array;
 
 @end
 
@@ -21,13 +20,31 @@
 {
     [super viewDidLoad];
 	
-    _array = [[NSArray alloc] initWithObjects:[NSNumber numberWithInteger:1], nil];
+    //シャッフルする配列を生成
+    _array = [[NSMutableArray alloc] initWithArray:SHUFFLE_LIST;
+
+    //ログ出力タイマー発行
+    [DCTimer setTimer:TIMER_INTERVAL delegate:self selector:@selector(logOutput:) userInfo:nil];
+}
+
+//ログ出力タイマーイベント
+- (void)logOutput:(NSTimer *)timer
+{
+    NSLog(@"-----------------------------------------------------");
     
-    //
-    _shuffleListLabel = [DCLabel planeLabel:CGRectMake(0, 0, LABEL_WIDTH, LABEL_HEIGHT)
-                                       text:[NSString stringWithFormat:@"%@", [DCRandomize shuffleArray:_array]]
-                                       font:LABEL_FONT textColor:[UIColor whiteColor]
-                              textAlignment:NSTextAlignmentCenter backgroundColor:[UIColor blackColor]];
+    //配列をシャッフルしてログ出力
+    NSLog(@"DCRandomize.shuffleArray: %@", [DCRandomize shuffleArray:_array]);
+    
+    //指定した範囲内の数値をシャッフルしてログ出力
+    NSLog(@"DCRandomize.shuffle: %@", [DCRandomize shuffle:MIN_ID max:MAX_ID]);
+    
+    //指定したIDと異なる乱数をログ出力 (exceptId以外の数値を出力)
+    NSLog(@"DCRandomize.exact: %d", [DCRandomize exact:MIN_ID max:MAX_ID exceptId:EXCEPT_ID]);
+    
+    //指定した範囲内の乱数をログ出力
+    NSLog(@"DCRandomize.range: %d", [DCRandomize range:MIN_ID max:MAX_ID]);
+    
+    NSLog(@"-----------------------------------------------------");
 }
 
 @end

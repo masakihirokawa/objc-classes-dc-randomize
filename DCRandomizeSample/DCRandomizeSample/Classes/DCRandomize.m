@@ -9,86 +9,52 @@
 
 @implementation DCRandomize
 
-static NSMutableArray *shuffleList;
-static NSInteger      shuffleNum;
-static NSMutableArray *tmpList;
-static NSInteger      tmpId;
-
 #pragma mark shuffle array
 
 //配列をシャッフルして取得
-+ (NSArray *)shuffleArray:(NSArray *)array
++ (NSMutableArray *)shuffleArray:(NSMutableArray *)array
 {
-    DCRandomize.shuffleList = [array copy];
-    DCRandomize.shuffleNum = [DCRandomize.shuffleList count];
-    while (DCRandomize.shuffleNum) {
-        NSUInteger m = floor(rand() % DCRandomize.shuffleNum);
-        id n = [DCRandomize.shuffleList objectAtIndex:--DCRandomize.shuffleNum];
-        [DCRandomize.shuffleList replaceObjectAtIndex:DCRandomize.shuffleNum
-                                           withObject:[DCRandomize.shuffleList objectAtIndex:m]];
-        [DCRandomize.shuffleList replaceObjectAtIndex:m withObject:n];
+    NSMutableArray *resultList = array;
+    int i = [resultList count];
+    while (--i) {
+        int j = rand() % (i + 1);
+        [resultList exchangeObjectAtIndex:i withObjectAtIndex:j];
     }
-    return DCRandomize.shuffleList;
+    return [NSMutableArray arrayWithArray:resultList];
 }
 
 #pragma mark shuffle
 
 //指定した範囲内の数値をシャッフルして配列取得
-
-
++ (NSMutableArray *)shuffle:(NSInteger)min max:(NSInteger)max
+{
+    NSMutableArray *tmpList = [NSMutableArray array];
+    NSMutableArray *resultList = [NSMutableArray array];
+    for (int i = 0; i < max; i++) {
+        [tmpList insertObject:[NSNumber numberWithInt:i + min] atIndex:i];
+    }
+    resultList = [DCRandomize shuffleArray:tmpList];
+    return resultList;
+}
 
 #pragma mark exact
 
-//指定したIDと異なる乱数を取得
+//指定した数値と異なる乱数を取得
++ (NSInteger)exact:(NSInteger)min max:(NSInteger)max exceptId:(NSInteger)exceptId
+{
+    NSInteger tmpId;
+    do {
+        tmpId = [DCRandomize range:min max:max];
+    } while (tmpId == exceptId);
+    return tmpId;
+}
 
-
-
-#pragma mark
+#pragma mark range
 
 //指定した範囲内の乱数を取得
-
-
-
-#pragma mark setter/getter method
-
-+ (void)setShuffleList:(NSMutableArray *)array
++ (NSInteger)range:(NSInteger)min max:(NSInteger)max
 {
-    shuffleList = array;
-}
-
-+ (NSMutableArray *)shuffleList
-{
-    return shuffleList;
-}
-
-+ (void)setShuffleNum:(NSInteger)num
-{
-    shuffleNum = num;
-}
-
-+ (NSInteger)shuffleNum
-{
-    return shuffleNum;
-}
-
-+ (void)setTmpList:(NSMutableArray *)array
-{
-    tmpList = array;
-}
-
-+ (NSMutableArray *)tmpList
-{
-    return tmpList;
-}
-
-+ (void)setTmpId:(NSInteger)id
-{
-    tmpId = id;
-}
-
-+ (NSInteger)tmpId
-{
-    return tmpId;
+    return min + arc4random_uniform((max - min) + 1);
 }
 
 @end

@@ -20,7 +20,6 @@
 		606D150717D9BCC70074C349 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606D150517D9BCC70074C349 /* MainStoryboard_iPad.storyboard */; };
 		606D150A17D9BCC70074C349 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 606D150917D9BCC70074C349 /* ViewController.m */; };
 		606D151317D9BD010074C349 /* DCRandomize.m in Sources */ = {isa = PBXBuildFile; fileRef = 606D151217D9BD010074C349 /* DCRandomize.m */; };
-		606D151817D9CA5B0074C349 /* DCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 606D151517D9CA5B0074C349 /* DCLabel.m */; };
 		606D151917D9CA5B0074C349 /* DCTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 606D151717D9CA5B0074C349 /* DCTimer.m */; };
 /* End PBXBuildFile section */
 
@@ -44,8 +43,6 @@
 		606D150917D9BCC70074C349 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		606D151117D9BD010074C349 /* DCRandomize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRandomize.h; sourceTree = "<group>"; };
 		606D151217D9BD010074C349 /* DCRandomize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRandomize.m; sourceTree = "<group>"; };
-		606D151417D9CA5B0074C349 /* DCLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLabel.h; sourceTree = "<group>"; };
-		606D151517D9CA5B0074C349 /* DCLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLabel.m; sourceTree = "<group>"; };
 		606D151617D9CA5B0074C349 /* DCTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTimer.h; sourceTree = "<group>"; };
 		606D151717D9CA5B0074C349 /* DCTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTimer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,8 +122,6 @@
 			children = (
 				606D151117D9BD010074C349 /* DCRandomize.h */,
 				606D151217D9BD010074C349 /* DCRandomize.m */,
-				606D151417D9CA5B0074C349 /* DCLabel.h */,
-				606D151517D9CA5B0074C349 /* DCLabel.m */,
 				606D151617D9CA5B0074C349 /* DCTimer.h */,
 				606D151717D9CA5B0074C349 /* DCTimer.m */,
 			);
@@ -204,7 +199,6 @@
 				606D14FB17D9BCC70074C349 /* AppDelegate.m in Sources */,
 				606D150A17D9BCC70074C349 /* ViewController.m in Sources */,
 				606D151317D9BD010074C349 /* DCRandomize.m in Sources */,
-				606D151817D9CA5B0074C349 /* DCLabel.m in Sources */,
 				606D151917D9CA5B0074C349 /* DCTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +332,7 @@
 				606D150F17D9BCC70074C349 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
