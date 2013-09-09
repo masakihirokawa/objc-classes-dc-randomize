@@ -29,12 +29,11 @@
 + (NSMutableArray *)shuffle:(NSInteger)min max:(NSInteger)max
 {
     NSMutableArray *tmpList = [NSMutableArray array];
-    NSMutableArray *resultList = [NSMutableArray array];
-    for (int i = 0; i < max; i++) {
+    int num = (max - min) + 1;
+    for (int i = 0; i < num; i++) {
         [tmpList insertObject:[NSNumber numberWithInt:i + min] atIndex:i];
     }
-    resultList = [DCRandomize shuffleArray:tmpList];
-    return resultList;
+    return [DCRandomize shuffleArray:tmpList];
 }
 
 #pragma mark exact
